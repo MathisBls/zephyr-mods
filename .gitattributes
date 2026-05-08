@@ -1,0 +1,16 @@
+# Force LF on text files so Windows checkouts don't accidentally commit
+# CRLF that confuses GitHub's markdown renderer.
+* text=auto eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.zip binary
+*.dll binary
