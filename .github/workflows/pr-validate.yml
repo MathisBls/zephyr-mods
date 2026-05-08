@@ -2,10 +2,6 @@ name: Validate PR
 
 on:
   pull_request:
-    paths:
-      - 'mods/**'
-      - 'schema/**'
-      - 'scripts/**'
 
 jobs:
   validate:
