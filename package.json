@@ -1,0 +1,21 @@
+{
+	"name": "zephyr-mods",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Community mod registry for Zephyr",
+	"scripts": {
+		"new-mod": "node scripts/new-mod.mjs",
+		"new-version": "node scripts/new-version.mjs",
+		"validate": "node scripts/validate.mjs",
+		"build-registry": "node scripts/build-registry.mjs"
+	},
+	"dependencies": {
+		"@inquirer/prompts": "^7.2.0",
+		"ajv": "^8.17.1",
+		"ajv-formats": "^3.0.1"
+	},
+	"engines": {
+		"node": ">=20"
+	}
+}

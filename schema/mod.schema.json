@@ -1,20 +1,94 @@
 {
-  "$schema": "https://json-schema.org/draft-07/schema",
-  "type": "object",
-  "required": ["name", "slug", "author", "version", "description", "games", "repository", "download"],
-  "properties": {
-    "name": { "type": "string", "minLength": 1 },
-    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-    "author": { "type": "string", "minLength": 1 },
-    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-    "description": { "type": "string", "maxLength": 300 },
-    "games": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "dependencies": { "type": "array", "items": { "type": "string" } },
-    "repository": { "type": "string", "format": "uri" },
-    "download": { "type": "string", "format": "uri" },
-    "categories": { "type": "array", "items": { "type": "string" } },
-    "nsfw": { "type": "boolean" },
-    "deprecated": { "type": "boolean" }
-  },
-  "additionalProperties": false
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Zephyr Mod",
+	"type": "object",
+	"required": [
+		"name",
+		"slug",
+		"author",
+		"description",
+		"game",
+		"latest",
+		"repository"
+	],
+	"properties": {
+		"name": {
+			"type": "string",
+			"minLength": 2,
+			"maxLength": 60,
+			"description": "Display name shown in Zephyr"
+		},
+		"slug": {
+			"type": "string",
+			"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+			"minLength": 2,
+			"maxLength": 60,
+			"description": "URL-safe identifier, lowercase with dashes"
+		},
+		"author": {
+			"type": "string",
+			"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38}[A-Za-z0-9])?$",
+			"description": "GitHub username of the mod author (used for ownership lock)"
+		},
+		"description": {
+			"type": "string",
+			"minLength": 8,
+			"maxLength": 200,
+			"description": "Short tagline shown in mod cards"
+		},
+		"game": {
+			"type": "string",
+			"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+			"description": "Zephyr game slug (must match a supported game)"
+		},
+		"latest": {
+			"type": "string",
+			"pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$",
+			"description": "Current version (semver). Must match a versions/<v>.json file."
+		},
+		"repository": {
+			"type": "string",
+			"pattern": "^https://github\\.com/[A-Za-z0-9-]+/[A-Za-z0-9._-]+/?$",
+			"description": "Source code repo on GitHub"
+		},
+		"website": {
+			"type": "string",
+			"format": "uri"
+		},
+		"donate": {
+			"type": "string",
+			"format": "uri"
+		},
+		"categories": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": [
+					"gameplay",
+					"cosmetic",
+					"quality-of-life",
+					"library",
+					"audio",
+					"visual",
+					"server",
+					"client",
+					"tool",
+					"misc"
+				]
+			},
+			"uniqueItems": true,
+			"maxItems": 5
+		},
+		"dependencies": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*/[A-Za-z0-9-]+/[a-z0-9]+(?:-[a-z0-9]+)*$"
+			},
+			"description": "List of required Zephyr mods, format: <game>/<author>/<slug>"
+		},
+		"nsfw": { "type": "boolean", "default": false },
+		"deprecated": { "type": "boolean", "default": false }
+	},
+	"additionalProperties": false
 }

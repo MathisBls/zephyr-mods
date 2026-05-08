@@ -1,0 +1,39 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Zephyr Mod Version",
+	"type": "object",
+	"required": ["version", "released", "url", "sha256", "size"],
+	"properties": {
+		"version": {
+			"type": "string",
+			"pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$",
+			"description": "Semver version (must match the file name)"
+		},
+		"released": {
+			"type": "string",
+			"format": "date-time",
+			"description": "ISO-8601 timestamp when this version was published"
+		},
+		"url": {
+			"type": "string",
+			"pattern": "^https://github\\.com/[A-Za-z0-9-]+/[A-Za-z0-9._-]+/releases/download/[^/\\s]+/[^/\\s]+$",
+			"description": "Immutable GitHub Release asset URL — required for security"
+		},
+		"sha256": {
+			"type": "string",
+			"pattern": "^[a-f0-9]{64}$",
+			"description": "SHA-256 hash of the asset, lowercase hex. Verified by Zephyr before install."
+		},
+		"size": {
+			"type": "integer",
+			"minimum": 1,
+			"description": "Asset size in bytes"
+		},
+		"changelog": {
+			"type": "string",
+			"maxLength": 4000,
+			"description": "Markdown release notes for this version"
+		}
+	},
+	"additionalProperties": false
+}
