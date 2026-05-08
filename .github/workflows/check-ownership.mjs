@@ -5,7 +5,7 @@ import { execSync } from 'node:child_process';
 const PR_AUTHOR = (process.env.PR_AUTHOR || '').toLowerCase();
 const PRISMO_MEMBERS = ['mathisbls', 'thefable1']; // extend as the team grows
 
-const baseSha = execSync('git merge-base HEAD origin/main', { encoding: 'utf8' }).trim();
+const baseSha = execSync('git merge-base HEAD origin/master', { encoding: 'utf8' }).trim();
 const diff = execSync(`git diff --name-only ${baseSha}...HEAD`, { encoding: 'utf8' });
 const files = diff.split('\n').filter(Boolean);
 

@@ -21,7 +21,7 @@ function readJsonOrNull(p) {
 }
 
 function rawUrl(game, author, slug, file) {
-	return `https://raw.githubusercontent.com/Prismo-Studio/zephyr-mods/main/mods/${game}/${author}/${slug}/${file}`;
+	return `https://raw.githubusercontent.com/Prismo-Studio/zephyr-mods/master/mods/${game}/${author}/${slug}/${file}`;
 }
 
 const entries = [];
@@ -79,7 +79,7 @@ entries.sort((a, b) => {
 
 const registry = {
 	$schema:
-		'https://raw.githubusercontent.com/Prismo-Studio/zephyr-mods/main/schema/registry.schema.json',
+		'https://raw.githubusercontent.com/Prismo-Studio/zephyr-mods/master/schema/registry.schema.json',
 	version: 1,
 	generated: new Date().toISOString(),
 	mods: entries

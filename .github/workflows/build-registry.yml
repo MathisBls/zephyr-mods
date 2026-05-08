@@ -2,7 +2,7 @@ name: Build registry
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - 'mods/**'
       - 'scripts/build-registry.mjs'
