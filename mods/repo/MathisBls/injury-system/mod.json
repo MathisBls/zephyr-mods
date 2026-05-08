@@ -1,0 +1,9 @@
+{
+	"name": "Injury System",
+	"slug": "injury-system",
+	"author": "MathisBls",
+	"description": "A BepInEx mod for R.E.P.O that adds a realistic injury system. When you take damage, body parts can get injured with different severity levels, affecting your movement, grip, vision, and stamina.",
+	"game": "repo",
+	"latest": "1.0.0",
+	"repository": "https://github.com/MathisBls/R.E.P.O-injury-system"
+}
